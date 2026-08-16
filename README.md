@@ -25,6 +25,29 @@ MediaPeek 把「正在播放」做成一张贴在屏幕顶边的小卡片：平�
 - **多语言界面**：中文 / English，默认跟随系统语言，托盘菜单随时切换
 - **安静常驻**：置顶但不抢焦点，无任务栏按钮、不出现在 Alt+Tab，只在托盘留一个图标
 
+## 看看效果
+
+**贴边唤出** —— 光标贴上顶边停留片刻，卡片滑出；离开自动收起
+
+![贴边唤出](assets/edge-reveal.gif)
+
+**自动现身** —— 切歌或每分钟 peek，先歌名、后封面歌手两段展开
+
+![自动现身](assets/auto-peek.gif)
+
+**手势控制** —— 点击播放/暂停，横滑切歌
+
+![手势控制](assets/gestures.gif)
+
+**按钮模式** —— 不习惯手势，可在托盘菜单切成传输按钮
+
+![按钮模式](assets/buttons.gif)
+
+**启动问候** —— 首次运行是带引导的欢迎卡，之后是迷你胶囊
+
+![首次运行欢迎卡](assets/welcome.gif)
+![迷你问候胶囊](assets/hello.gif)
+
 ## 下载与运行
 
 1. 到 [Releases](https://github.com/GitHub-Coder-xu/MediaPeek/releases/latest) 下载 `MediaPeek.exe`（单文件、免安装，自包含运行时）
