@@ -1,75 +1,138 @@
 <div align="center">
-  <img src="assets/logo.png" width="128" alt="MediaPeek 图标">
+  <img src="docs/images/logo.png" alt="MediaPeek logo" width="96">
   <h1>MediaPeek</h1>
-  <p><b>不占屏幕的 Windows 顶部媒体卡片 —— 光标贴住屏幕顶边，正在播放滑出来</b></p>
-  <p>A zero-footprint media card for Windows: rest the pointer on the top edge and what's playing slides into view.</p>
-  <p>
-    <a href="https://github.com/GitHub-Coder-xu/MediaPeek/releases/latest"><img alt="最新版本" src="https://img.shields.io/github/v/release/GitHub-Coder-xu/MediaPeek"></a>
-    <img alt="平台" src="https://img.shields.io/badge/platform-Windows%2010%20%2F%2011-0078D4">
-  </p>
+  <p>A now-playing media card that hides in the top edge of your Windows screen.<br>
+  Zero screen space, zero clicks wasted — it isn't there until you want it.</p>
+  <p><b>English</b> | <a href="README.zh-CN.md">中文</a></p>
+  <img src="docs/images/edge-reveal.gif" alt="Rest the cursor on the top screen edge and the card slides out" width="680">
 </div>
 
-## 这是什么
+## Why
 
-MediaPeek 把「正在播放」做成一张贴在屏幕顶边的小卡片：平时完全隐藏、不占一像素屏幕，想看的时候光标往顶边一贴，封面、歌名、歌手就滑出来；点一下播放/暂停，滑一下切歌，然后它自己悄悄收回去。
+Switching windows just to see what's playing breaks flow. MediaPeek puts the current
+track — cover, title, artist — one cursor-flick away, on top of everything including
+fullscreen apps, while taking **no screen space at all** when idle: the hidden card's
+pixels are literally click-through.
 
-不用切窗口，不用在任务栏找播放器，全屏看视频、打游戏时也一样能用。
+It talks to your player through Windows SMTC, so NetEase Cloud Music, QQ Music,
+Spotify, browsers and most other players work with zero setup.
 
-## 功能亮点
+## Features
 
-- **零屏幕占用**：卡片隐藏时按像素点击穿透，不妨碍你点下面的任何窗口
-- **贴边唤出**：光标贴住屏幕顶边停留约 0.15 秒唤出，离开约 0.6 秒自动收起
+### Reveal on demand
 
-  ![贴边唤出](assets/edge-reveal.gif)
-- **自动现身**：网易云切歌即时浮现报歌名；播放中每分钟轻轻提示一次（3.5 秒）
+Rest the cursor on the top screen edge for a beat (~150 ms, so fly-bys to a maximized
+window's close button never trigger it) and the card slides out. It stays while hovered
+and tucks itself away 600 ms after you leave.
 
-  ![自动现身](assets/auto-peek.gif)
-- **纯手势控制**：点击卡片 = 播放/暂停，左右横滑 = 上/下一首；不习惯手势可在托盘菜单切成按钮
+![Edge-dwell reveal](docs/images/edge-reveal.gif)
 
-  ![手势控制](assets/gestures.gif)
+### Now-playing peeks
 
-  ![按钮控制](assets/buttons.gif)
-- **氛围细节**：封面取色氛围光、播放中描边流光，两段式「先歌名、后封面歌手」展开动画
-- **多语言界面**：中文 / English，默认跟随系统语言，托盘菜单随时切换
-- **安静常驻**：置顶但不抢焦点，无任务栏按钮、不出现在 Alt+Tab，只在托盘留一个图标
+The card also surfaces on its own: once when the track changes (NetEase Cloud Music),
+then a 3.5-second peek every minute while music is playing. Automatic displays are
+two-stage — the title glides in first, then the card stretches to make room for the
+cover and artist. Move the cursor onto a peek to take it over.
 
-## 下载与运行
+![Two-stage now-playing peek](docs/images/auto-peek.gif)
 
-1. 到 [Releases](https://github.com/GitHub-Coder-xu/MediaPeek/releases/latest) 下载 `MediaPeek.exe`（单文件、免安装，自包含运行时）
-2. 双击运行，图标常驻右下角托盘；首次运行会播放一段使用引导动画
+The card's left side wears an ambient glow sampled from the album art, and while music
+is playing a thin beam of light sweeps its hairline border — both kept strictly inside
+the capsule silhouette, so the click-through promise holds.
 
-   ![使用引导动画](assets/welcome.gif)
+### Gesture controls
 
-> [!NOTE]
-> 程序未购买代码签名证书，首次运行若出现 SmartScreen「Windows 已保护你的电脑」，点「更多信息」→「仍要运行」即可。
+No buttons by default: tap the card to play / pause, flick left or right to switch
+tracks (with an instant sideways nudge as feedback), and the card glides to the new
+title's width on its own.
 
-> [!TIP]
-> 微软商店版本正在筹备上架，届时可从商店直接安装并自动更新。
+![Card gestures](docs/images/gestures.gif)
 
-## 使用说明
+### Button controls
 
-| 操作 | 效果 |
-| --- | --- |
-| 光标贴住屏幕顶边停留 | 唤出卡片 |
-| 光标离开卡片 | 约 0.6 秒后自动收起 |
-| 点击卡片 | 播放 / 暂停 |
-| 横滑卡片 | 左滑下一首，右滑上一首 |
-| 左键托盘图标 | 唤出当前播放卡片 |
-| 右键托盘图标 | 菜单：开机启动 / 按钮控制 / 语言 / 重启 / 退出 |
+Prefer explicit transport buttons? Enable them from the tray menu and a
+previous / play-pause / next cluster appears on the card's right side.
 
-## 系统要求
+![Button controls](docs/images/buttons.gif)
 
-- Windows 11，或 Windows 10 19041 及以上
-- 播放器需接入系统媒体控制（SMTC）——网易云音乐、QQ 音乐、酷狗、Spotify 及主流浏览器均支持
+### Lives in the tray
 
-## 常见问题
+Left-click the tray icon to peek the card, right-click for the menu: launch at
+startup, control mode, interface language, store updates (packaged builds only),
+restart and exit.
 
-**贴了顶边没反应？** 确认播放器正在播放且支持 SMTC；光标要贴到屏幕最顶端的边缘并停留片刻，而不是快速划过。
+### Startup greetings
 
-**会收集数据吗？** 不会。本版本不发起任何网络请求，所有设置只保存在本机。
+Every launch plays a short greeting that grows out of the screen edge: a welcome card
+with usage hints on first run, a compact hello capsule afterwards.
 
-**开机自启在哪关？** 右键托盘图标取消勾选「开机启动」，或在任务管理器的「启动」页管理。
+![First-run welcome card](docs/images/welcome.gif)
+![Hello capsule](docs/images/hello.gif)
 
-## 反馈
+### And the quiet details
 
-问题与建议请提 [GitHub Issues](https://github.com/GitHub-Coder-xu/MediaPeek/issues)。
+- Always on top without stealing focus; no taskbar button, no Alt+Tab entry — and it
+  keeps working over fullscreen video and games.
+- Content-sized card: the capsule always wraps the full title and artist, no marquee,
+  no truncation, and animates between widths on track changes.
+- Multi-language UI (中文 / English), following the system language by default,
+  switchable anytime from the tray menu.
+- Single instance, crash-safe logging, settings persisted to
+  `%AppData%\ImmersiveBar\settings.json`.
+
+## Install
+
+- **Microsoft Store (MSIX):** the listing is being prepared; packaged builds get
+  automatic updates and a manifest-declared startup task. See
+  [Packaging](#packaging-for-the-microsoft-store) to build the package yourself.
+- **Portable exe:** a self-contained single-file build runs from anywhere — see
+  [Build from source](#build-from-source).
+
+Requires Windows 10 19041+ (developed on Windows 11).
+
+## Build from source
+
+Prerequisites: .NET 8 SDK with the Windows desktop workload.
+
+```powershell
+dotnet build ImmersiveBar.sln
+dotnet test tests/ImmersiveBar.Tests
+dotnet run --project src/ImmersiveBar
+```
+
+Produce the portable single-file exe:
+
+```powershell
+dotnet publish src/ImmersiveBar -c Release -r win-x64 --self-contained true `
+  /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true
+# Output: src/ImmersiveBar/bin/Release/net8.0-windows10.0.19041.0/win-x64/publish/ImmersiveBar.exe
+```
+
+## Packaging for the Microsoft Store
+
+```powershell
+powershell -ExecutionPolicy Bypass -File packaging\Pack-Msix.ps1          # unsigned, for store submission
+powershell -ExecutionPolicy Bypass -File packaging\Pack-Msix.ps1 -Sign    # dev-signed, for local sideloading
+```
+
+The script publishes, assembles and validates `artifacts\msix\ImmersiveBar.msix`.
+Before submitting, set the `Identity` values in `packaging\Package.appxmanifest` from
+Partner Center and bump `Identity@Version`. Packaged builds self-update through the
+Store and auto-start via the manifest `StartupTask` instead of the registry Run key.
+
+## How it works
+
+- C# / WPF on .NET 8 (`net8.0-windows10.0.19041.0`), **zero third-party
+  dependencies** — WinRT SMTC and the tray icon are driven through raw interop.
+- `ImmersiveBar.Core` is the pure logic layer (view model + SMTC abstraction, no WPF
+  references, UI dispatch injected) and is covered by xUnit tests; `ImmersiveBar` is
+  the WPF shell (layered click-through window, AppBar docking, animation choreography,
+  tray, settings, localization).
+- The window spans the monitor's top edge but reserves nothing (zero-height AppBar);
+  all reveals are render-thread `DoubleAnimation`s, so motion stays smooth on
+  high-refresh displays.
+
+## Acknowledgements
+
+Extracted from the immersive mode of DesktopBar. Player compatibility comes from the
+Windows System Media Transport Controls platform API.
