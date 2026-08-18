@@ -131,8 +131,3 @@ Store and auto-start via the manifest `StartupTask` instead of the registry Run 
 - The window spans the monitor's top edge but reserves nothing (zero-height AppBar);
   all reveals are render-thread `DoubleAnimation`s, so motion stays smooth on
   high-refresh displays.
-
-## Acknowledgements
-
-Extracted from the immersive mode of DesktopBar. Player compatibility comes from the
-Windows System Media Transport Controls platform API.
