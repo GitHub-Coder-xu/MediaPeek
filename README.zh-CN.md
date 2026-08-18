@@ -120,8 +120,3 @@ PublisherDisplayName 换成 Partner Center「产品标识」页的正式值，�
   AppBar 停靠、动画编排、托盘、设置持久化、多语言）。
 - 窗口铺满屏幕顶部但不预留任何空间（零高度 AppBar）；所有动画都是渲染线程
   驱动的 `DoubleAnimation`，高刷新率显示器上原生顺滑。
-
-## 致谢
-
-提取自 DesktopBar 的沉浸模式。播放器兼容性来自 Windows 系统媒体传输控制
-（SMTC）平台能力。
